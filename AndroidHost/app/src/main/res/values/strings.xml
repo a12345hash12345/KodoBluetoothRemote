@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kodo Bluetooth Remote</string>
+    <string name="accessibility_description">Allows remote keyboard and touch commands from your paired iPad while sharing is active.</string>
+</resources>

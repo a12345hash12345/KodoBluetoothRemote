@@ -1,0 +1,12 @@
+.gradle/
+build/
+**/build/
+.DS_Store
+DerivedData/
+*.xcuserstate
+
+*.zip
+AndroidHost/gradle-8.9-bin.zip
+
+*.zip
+AndroidHost/gradle-8.9-bin.zip

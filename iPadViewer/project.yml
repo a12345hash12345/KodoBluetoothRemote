@@ -1,0 +1,18 @@
+name: KodoBluetoothRemote
+options:
+  bundleIdPrefix: com.kodo
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  KodoBluetoothRemote:
+    type: application
+    platform: iOS
+    sources:
+      - path: KodoBluetoothRemote
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.kodo.bluetoothremote.viewer
+        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: "Connect to your Android host to view its shared screen and send controls."
+        INFOPLIST_KEY_UIBackgroundModes: bluetooth-central
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "2"

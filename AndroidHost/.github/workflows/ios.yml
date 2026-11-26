@@ -1,0 +1,50 @@
+name: Build iPad IPA
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "iPadViewer/**"
+      - ".github/workflows/ios.yml"
+
+jobs:
+  build-ios:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: iPadViewer
+        run: xcodegen generate
+
+      - name: Build iOS app
+        working-directory: iPadViewer
+        run: |
+          xcodebuild \
+            -project BluetoothRemote.xcodeproj \
+            -scheme BluetoothRemote \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Package unsigned IPA
+        run: |
+          mkdir -p IPA/Payload
+          cp -R iPadViewer/build/Build/Products/Release-iphoneos/KodoBluetoothRemote.app IPA/Payload/
+          cd IPA
+          zip -r ../KodoBluetoothRemote-unsigned.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: KodoBluetoothRemote-unsigned-IPA
+          path: KodoBluetoothRemote-unsigned.ipa
+          if-no-files-found: error
