@@ -12,6 +12,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.kodo.bluetoothremote.viewer
+        GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: "Connect to your Android host to view its shared screen and send controls."
         INFOPLIST_KEY_UIBackgroundModes: bluetooth-central
         SWIFT_VERSION: 5.0
