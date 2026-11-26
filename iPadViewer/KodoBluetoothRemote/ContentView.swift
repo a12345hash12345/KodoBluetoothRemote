@@ -13,12 +13,12 @@ struct ContentView: View {
                 .foregroundColor(.secondary)
 
             Button("Scan Bluetooth Devices") {
-                ble.scan()
+                ble.connect()
             }
             .buttonStyle(.borderedProminent)
 
             Button("Stop Scan") {
-                ble.stopScan()
+                ble.disconnect()
             }
             .buttonStyle(.bordered)
 
