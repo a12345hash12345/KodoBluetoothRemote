@@ -81,20 +81,3 @@ struct ContentView: View {
 
     private func sendKey(_ key: String, down: Bool) {
         let map: [String: Int] = ["A":29,"B":30,"C":31,"D":32,"E":33,"F":34,"G":35,"H":36,"I":37,"J":38,"K":39,"L":40,"M":41,"N":42,"O":43,"P":44,"Q":45,"R":46,"S":47,"T":48,"U":49,"V":50,"W":51,"X":52,"Y":53,"Z":54,"Space":62,"Return":66,"Esc":111,"Tab":61,"⌫":67,"←":21,"↑":19,"→":22,"↓":20}
-        if let code = map[key] { ble.send(["type":"key","code":code,"down":down]) }
-    }
-}
-
-private struct KeyCap: View {
-    let title: String
-    let isPressed: Bool
-    var body: some View {
-        Text(title)
-            .font(.system(size: 10, weight: .semibold, design: .rounded))
-            .lineLimit(1).minimumScaleFactor(0.6)
-            .frame(maxWidth: .infinity, minHeight: 30)
-            .background(isPressed ? Color.accentColor.opacity(0.35) : Color.clear)
-            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.secondary.opacity(0.55), lineWidth: 1))
-            .contentShape(Rectangle())
-    }
-}
