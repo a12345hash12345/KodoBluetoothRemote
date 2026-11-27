@@ -12,6 +12,12 @@ struct ContentView: View {
             Text("Connect your Android device")
                 .foregroundColor(.secondary)
 
+            Text(ble.status)
+                .font(.subheadline)
+                .foregroundColor(ble.connected ? .green : .secondary)
+                .multilineTextAlignment(.center)
+                .padding(.vertical, 8)
+
             Button("Scan Bluetooth Devices") {
                 ble.connect()
             }
